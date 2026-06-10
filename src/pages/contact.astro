@@ -6,30 +6,198 @@ const contact = await getEntry('pages', 'contact');
 ---
 
 <BaseLayout title="Contact" description="Get in touch with Taymoor Fouladi" image={contact.data.hero}>
-  <section class="max-w-4xl mx-auto px-4 md:px-8 py-16 md:py-32 text-center">
-    <p class="font-mono text-xs uppercase tracking-[0.2em] mb-4" style="color: var(--accent)">Contact</p>
-    <h1 class="font-display text-5xl md:text-7xl font-semibold tracking-tight leading-tight">
-      Get in <span style="color: var(--accent)">Touch.</span>
-    </h1>
-    <p class="mt-6 text-lg md:text-xl max-w-prose mx-auto" style="color: var(--muted)">
-      Feel free to drop me a line to discuss opportunities or projects. I look forward to hearing from you.
-    </p>
-
-    <div class="mt-12 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-      <a href="mailto:taymoor13@icloud.com" class="p-6 rounded-2xl border hover:bg-ink-100/40 dark:hover:bg-ink-800/40 transition-colors group" style="border-color: var(--line);">
-        <p class="font-mono text-xs uppercase tracking-wider" style="color: var(--muted)">Email</p>
-        <p class="mt-2 font-display text-xl md:text-2xl font-semibold group-hover:text-accent transition-colors">taymoor13@icloud.com</p>
-      </a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener" class="p-6 rounded-2xl border hover:bg-ink-100/40 dark:hover:bg-ink-800/40 transition-colors group" style="border-color: var(--line);">
-        <p class="font-mono text-xs uppercase tracking-wider" style="color: var(--muted)">LinkedIn</p>
-        <p class="mt-2 font-display text-xl md:text-2xl font-semibold group-hover:text-accent transition-colors">Connect →</p>
-      </a>
+  <section class="max-w-4xl mx-auto px-4 md:px-8 py-16 md:py-24">
+    <div class="text-center">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] mb-4" style="color: var(--accent)">Contact</p>
+      <h1 class="font-display text-5xl md:text-7xl font-semibold tracking-tight leading-tight">
+        Get in <span style="color: var(--accent)">Touch.</span>
+      </h1>
+      <p class="mt-6 text-lg md:text-xl max-w-prose mx-auto" style="color: var(--muted)">
+        Drop me a line to discuss opportunities, collaborations, or projects.
+        I usually respond within a day or two.
+      </p>
     </div>
 
-    {contact.data.hero && (
-      <div class="mt-16 rounded-2xl overflow-hidden max-w-md mx-auto">
-        <img src={contact.data.hero} alt="Taymoor Fouladi" class="w-full" />
+    <form
+      id="contact-form"
+      class="mt-12 grid gap-5 max-w-2xl mx-auto"
+      novalidate
+    >
+      <div class="grid sm:grid-cols-2 gap-5">
+        <label class="block">
+          <span class="block text-sm font-mono uppercase tracking-wider mb-2" style="color: var(--muted)">Name *</span>
+          <input
+            type="text"
+            name="name"
+            required
+            autocomplete="name"
+            class="w-full px-4 py-3 rounded-xl border bg-transparent focus:outline-none focus:ring-2"
+            style="border-color: var(--line);"
+          />
+        </label>
+        <label class="block">
+          <span class="block text-sm font-mono uppercase tracking-wider mb-2" style="color: var(--muted)">Email *</span>
+          <input
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
+            class="w-full px-4 py-3 rounded-xl border bg-transparent focus:outline-none focus:ring-2"
+            style="border-color: var(--line);"
+          />
+        </label>
       </div>
-    )}
+
+      <label class="block">
+        <span class="block text-sm font-mono uppercase tracking-wider mb-2" style="color: var(--muted)">Subject</span>
+        <input
+          type="text"
+          name="subject"
+          class="w-full px-4 py-3 rounded-xl border bg-transparent focus:outline-none focus:ring-2"
+          style="border-color: var(--line);"
+        />
+      </label>
+
+      <label class="block">
+        <span class="block text-sm font-mono uppercase tracking-wider mb-2" style="color: var(--muted)">Message *</span>
+        <textarea
+          name="message"
+          required
+          rows="6"
+          class="w-full px-4 py-3 rounded-xl border bg-transparent focus:outline-none focus:ring-2 resize-y"
+          style="border-color: var(--line);"
+        ></textarea>
+      </label>
+
+      <!-- Honeypot field — should remain empty -->
+      <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+      <div class="flex flex-col sm:flex-row items-center gap-4 mt-2">
+        <button
+          type="submit"
+          id="contact-submit"
+          class="px-8 py-3 rounded-full font-semibold text-white text-base transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+          style="background: var(--accent);"
+        >
+          Send message →
+        </button>
+        <p class="text-xs" style="color: var(--muted);">
+          Your details are never stored or shared.
+        </p>
+      </div>
+
+      <div
+        id="contact-status"
+        class="mt-4 hidden p-4 rounded-xl border text-sm"
+        role="status"
+        aria-live="polite"
+      ></div>
+    </form>
+
+    <div class="mt-16 pt-12 border-t text-center" style="border-color: var(--line);">
+      <p class="text-sm" style="color: var(--muted);">
+        Prefer LinkedIn? Connect with me directly:
+      </p>
+      <a
+        href="https://www.linkedin.com/in/taymoor-fouladi"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 mt-3 px-5 py-2.5 rounded-full border font-semibold text-sm hover:opacity-70 transition-opacity"
+        style="border-color: var(--line);"
+      >
+        LinkedIn / taymoor-fouladi →
+      </a>
+    </div>
   </section>
 </BaseLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = document.getElementById('contact-status') as HTMLDivElement;
+  const submit = document.getElementById('contact-submit') as HTMLButtonElement;
+
+  function showStatus(msg: string, kind: 'ok' | 'err' | 'info') {
+    status.classList.remove('hidden');
+    status.textContent = msg;
+    status.style.borderColor = 'var(--line)';
+    if (kind === 'ok') {
+      status.style.background = 'rgba(34,197,94,0.08)';
+      status.style.color = 'rgb(22,163,74)';
+    } else if (kind === 'err') {
+      status.style.background = 'rgba(239,68,68,0.08)';
+      status.style.color = 'rgb(220,38,38)';
+    } else {
+      status.style.background = 'transparent';
+      status.style.color = 'var(--muted)';
+    }
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const fd = new FormData(form);
+
+    if (fd.get('company')) return;
+
+    const payload = {
+      name: String(fd.get('name') || '').trim(),
+      email: String(fd.get('email') || '').trim(),
+      subject: String(fd.get('subject') || '').trim(),
+      message: String(fd.get('message') || '').trim(),
+    };
+
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+    showStatus('Sending your message…', 'info');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        showStatus(
+          (data as any).message ||
+            'Thanks — message received. I\u2019ll get back to you shortly.',
+          'ok'
+        );
+        form.reset();
+      } else if (res.status === 503) {
+        showStatus(
+          'The contact form isn\u2019t fully configured yet. Please reach out via LinkedIn for now.',
+          'err'
+        );
+      } else {
+        showStatus(
+          (data as any).error ||
+            'Something went wrong. Please try again or reach out via LinkedIn.',
+          'err'
+        );
+      }
+    } catch (err) {
+      showStatus('Network error. Please try again.', 'err');
+    } finally {
+      submit.disabled = false;
+      submit.textContent = 'Send message \u2192';
+    }
+  });
+</script>
+
+<style>
+  #contact-form input,
+  #contact-form textarea {
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+  }
+  #contact-form input:focus,
+  #contact-form textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+</style>

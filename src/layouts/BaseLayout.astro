@@ -9,9 +9,17 @@ interface Props {
   image?: string;
 }
 
-const { title, description = 'Taymoor Fouladi — Director / Product / CX UX UI / AI', image } = Astro.props;
+const {
+  title,
+  description = 'Senior digital and product leader with 20+ years delivering enterprise-scale transformation, AI adoption, and customer experience strategy across Rakuten, adidas, Esprit, Harrods, Net-a-Porter, MR PORTER, and Value Retail.',
+  image = '/og-card.png',
+} = Astro.props;
+
 const siteName = 'Taymoor Fouladi';
 const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = image.startsWith('http') ? image : new URL(image, Astro.site).href;
 ---
 
 <!doctype html>
@@ -20,15 +28,34 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta name="author" content="Taymoor Fouladi" />
+    <meta name="theme-color" content="#FF6B47" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    {image && <meta property="og:image" content={image} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Taymoor Fouladi — Director / AI Transformation / Digital Product / Customer Experience" />
+
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Taymoor Fouladi — Director / AI Transformation / Digital Product / Customer Experience" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap.xml" />
+
     <script is:inline>
-      // Theme: respect saved choice, then system, default light
       const saved = localStorage.getItem('theme');
       const sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (saved === 'dark' || (!saved && sys)) document.documentElement.classList.add('dark');

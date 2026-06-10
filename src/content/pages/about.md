@@ -1,51 +1,60 @@
 ---
 title: "About"
-tagline: "A way of life"
+tagline: "Director · AI Transformation · Digital Product · Customer Experience"
 hero: "/assets/img/taymoor_teamlabs_2_747cd3b044.png"
-description: ""
+description: "Senior digital and product leader with 20+ years of experience delivering enterprise-scale digital transformation, AI adoption, and customer experience strategy across Rakuten, adidas, Esprit, Harrods, Net-a-Porter, MR PORTER and Value Retail."
 ---
+
 ![](/assets/img/taymoor_teamlabs_2_747cd3b044.png)
 
-### My understanding of CX & UX is beyond digital and is a way of life. My journey has always had a customer experience focus and I have built upon every encounter.
+### Senior digital and product leader with 20+ years delivering enterprise-scale transformation, AI adoption, and customer experience strategy.
 
-#### DIRECTOR / PRODUCT / UX / AI
+I bring a rare full-stack perspective across UX, UI development, digital experience, operations, and product leadership — bridging creativity, technology, and business strategy to deliver scalable digital ecosystems, operational efficiency, organisational scalability, commercial growth, and high-performing customer experiences.
 
-Professional Career
+A trusted senior leader with a track record of aligning executive stakeholders, product, engineering, UX, marketing, and operations teams to deliver complex transformation initiatives at global scale.
 
-Highly experienced with over fifteen years of expertise in product development, strategy, and cross-functional collaboration. Proven track record in leading high-impact initiatives, delivering innovative solutions, and driving business growth.
+#### Where I've worked
 
-A strategic leader recognised for fostering strong stakeholder relationships, solving complex problems.
+Rakuten · adidas · Esprit · Harrods · Net-a-Porter · MR PORTER · Value Retail (Bicester Village) · YEEZY · Y-3 · BBC
 
-Skilled in balancing customer needs with business goals to create products that enhance user experiences and generate revenue. Known for emotional intelligence, effective communication, and delivering exceptional results in fast-paced, high-pressure environments. Adept at navigating ambiguity, influencing teams, and steering projects from concept to successful launch.
+#### What I do
 
-Adept at fostering strong relationships across diverse teams and stakeholders, I excel in strategic leadership and problem-solving, consistently delivering results that exceed expectations. My strengths are emotional intelligence, effective communication, and a visionary approach to driving organisational growth.
+- **Product Strategy & Leadership** — from concept to launch
+- **AI Adoption & Enterprise Transformation** — frameworks, governance, training
+- **Customer & User Experience Strategy** — research, journeys, design ops
+- **Omnichannel Commerce** — web, mobile, retail, app
+- **Cross-functional leadership** — aligning execs, engineering, design, marketing
+- **Agile Product Delivery** — PSPO · PSM · PRINCE2
 
-Passionate about nurturing talent and fostering a growth mindset, I am strongly dedicated to mentoring team members, providing guidance for their career development, and empowering them to reach their full potential. With a focus on continuous improvement and a commitment to excellence, I am poised to impact any leadership role significantly.
+#### Recent highlights
 
-My Love for CX
+- Directed enterprise AI adoption initiatives at **Rakuten** impacting **40,000+ employees**, contributing to a 60%+ increase in internal AI platform engagement and 85%+ completion on mandatory AI training programmes.
+- Spearheaded the **Global Rakuten AI Portal** — a centralised destination for AI tools, communications, governance, training and innovation, supporting thousands of monthly employee interactions.
+- Directed digital transformation initiatives at **Esprit** across EMEA focused on CX, commercial performance, operational alignment and omnichannel platform enhancement.
+- Led global digital experience strategy at **adidas** across CONFIRMED app and omnichannel commerce, including ID2.0 personalisation, Size & Fit, and the 'Wait Less, Shop More' booking platform during COVID.
+- Managed a **£1M+ digital platform investment** across 9+ international retail websites at Value Retail / Bicester Village Shopping Collection.
 
-My personal love for great customer experience goes way beyond my job and professional life, it is something that is instilled in me and so important to my everyday life.
+#### What makes me different
 
-Everyday you encounter some sort of experience, whilst travelling to work, buying a coffee, paying for parking and all of these impact your wellbeing.
+My unique advantage is the rare combination of product, UX, operations, engineering understanding, AI enablement, and enterprise transformation.
 
-Good CX is not complicated or expensive, it just needs some proper thought, time and attention.
+- **Full-stack product expertise** — design, development, and strategic perspectives in one head.
+- **Enterprise AI enablement** — scalable adoption frameworks driving organisational change.
+- **Customer-centric strategy rooted in data, experience design and business impact.**
+- **Cross-functional leadership** — aligning stakeholders, engineers, and designers to execute high-impact initiatives.
 
-Me
+#### A way of life
 
-I have diverse interests that reflect my passion for exploration and activity and so far I have lived and worked in London, Munich, Amsterdam and now Tokyo.
+My understanding of CX & UX goes way beyond digital — it's a way of life. Every encounter teaches me something. Good CX is not complicated or expensive; it just needs proper thought, time and attention.
 
-From my love for sneakers and fashion to my fascination with technology, I enjoy staying current and engaged with the latest trends.
+#### Me
 
-Music is another passion of mine, particularly live performances that energize and inspire me.
+I've lived and worked in **London, Munich, Amsterdam, and now Tokyo**. Outside work I'm passionate about product innovation, AI, and emerging tech. Off-screen: endurance sports, travel, and live music. Currently training for ultramarathons and endurance events while continuing to explore the intersection between performance, mindset, and innovation.
 
-Traveling allows me to immerse myself in different cultures and experiences, while activities like CrossFit, surfing, tennis, padel, snowboarding, football, and running keep me active and energised.
+#### Currently
 
-One of my most memorable adventures was cycling from London to Paris, a journey that tested my endurance and provided unforgettable experiences along the way.
+Open to senior leadership opportunities across **AI transformation, digital product, and customer experience strategy**.
 
-1 minute video pitch
-
-4 minute video pitch
+[Download my CV](/cv.pdf) · [LinkedIn](https://www.linkedin.com/in/taymoor-fouladi)
 
 ![](/assets/img/taymoor_teamlabs_3_24793d9736.png)
-
-Portfolio Career Blog About

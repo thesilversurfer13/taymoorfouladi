@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://taymoorfouladi.com',
+  site: 'https://taymoorfouladi.pages.dev',
   integrations: [tailwind()],
   markdown: {
     shikiConfig: { theme: 'github-dark-dimmed', wrap: true },

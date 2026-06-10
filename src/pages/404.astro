@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found" description="That page wandered off. Let's get you back on track.">
+  <section class="max-w-3xl mx-auto px-4 md:px-8 py-24 md:py-32 text-center">
+    <p class="font-mono text-xs uppercase tracking-[0.2em] mb-6" style="color: var(--accent)">Error 404</p>
+    <h1 class="font-display text-7xl md:text-9xl font-semibold tracking-tight leading-none">
+      Lost in <span style="color: var(--accent)">space.</span>
+    </h1>
+    <p class="mt-8 text-lg md:text-xl max-w-prose mx-auto" style="color: var(--muted)">
+      That page wandered off the map. The good news: there's plenty more to see.
+    </p>
+
+    <div class="mt-12 flex flex-wrap justify-center gap-3">
+      <a href="/" class="px-6 py-3 rounded-full font-semibold text-white" style="background: var(--accent)">
+        Back home →
+      </a>
+      <a href="/portfolio" class="px-6 py-3 rounded-full font-semibold border" style="border-color: var(--line)">
+        Browse portfolio
+      </a>
+      <a href="/contact" class="px-6 py-3 rounded-full font-semibold border" style="border-color: var(--line)">
+        Get in touch
+      </a>
+    </div>
+
+    <p class="mt-16 text-xs font-mono" style="color: var(--muted);">
+      Or, you know — go for a walk. Probably more rewarding.
+    </p>
+  </section>
+</BaseLayout>
