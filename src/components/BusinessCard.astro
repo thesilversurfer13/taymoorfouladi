@@ -3,13 +3,16 @@ import QRCode from 'qrcode';
 
 const SITE = 'https://taymoorfouladi.pages.dev';
 
-const qrSvg = await QRCode.toString(SITE, {
+const qrSvgRaw = await QRCode.toString(SITE, {
   type: 'svg',
   errorCorrectionLevel: 'M',
   margin: 0,
-  width: 240,
   color: { dark: '#1a1a1a', light: '#0000' },
 });
+
+const qrSvg = qrSvgRaw
+  .replace(/\swidth="[^"]*"/, '')
+  .replace(/\sheight="[^"]*"/, '');
 ---
 
 <div class="bc-wrapper">
@@ -307,14 +310,20 @@ const qrSvg = await QRCode.toString(SITE, {
   }
 
   .bc-qr {
-    width: clamp(120px, 28cqw, 160px);
+    width: clamp(110px, 28cqw, 160px);
+    height: clamp(110px, 28cqw, 160px);
     aspect-ratio: 1;
     background: #fff;
     border-radius: 12px;
     padding: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    flex-shrink: 0;
   }
-  .bc-qr svg { width: 100%; height: 100%; display: block; }
+  .bc-qr :global(svg) {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
 
   .bc-qr-label {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
