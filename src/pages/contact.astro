@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const contact = await getEntry('pages', 'contact');
+---
+
+<BaseLayout title="Contact" description="Get in touch with Taymoor Fouladi" image={contact.data.hero}>
+  <section class="max-w-4xl mx-auto px-4 md:px-8 py-16 md:py-32 text-center">
+    <p class="font-mono text-xs uppercase tracking-[0.2em] mb-4" style="color: var(--accent)">Contact</p>
+    <h1 class="font-display text-5xl md:text-7xl font-semibold tracking-tight leading-tight">
+      Get in <span style="color: var(--accent)">Touch.</span>
+    </h1>
+    <p class="mt-6 text-lg md:text-xl max-w-prose mx-auto" style="color: var(--muted)">
+      Feel free to drop me a line to discuss opportunities or projects. I look forward to hearing from you.
+    </p>
+
+    <div class="mt-12 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+      <a href="mailto:taymoor13@icloud.com" class="p-6 rounded-2xl border hover:bg-ink-100/40 dark:hover:bg-ink-800/40 transition-colors group" style="border-color: var(--line);">
+        <p class="font-mono text-xs uppercase tracking-wider" style="color: var(--muted)">Email</p>
+        <p class="mt-2 font-display text-xl md:text-2xl font-semibold group-hover:text-accent transition-colors">taymoor13@icloud.com</p>
+      </a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener" class="p-6 rounded-2xl border hover:bg-ink-100/40 dark:hover:bg-ink-800/40 transition-colors group" style="border-color: var(--line);">
+        <p class="font-mono text-xs uppercase tracking-wider" style="color: var(--muted)">LinkedIn</p>
+        <p class="mt-2 font-display text-xl md:text-2xl font-semibold group-hover:text-accent transition-colors">Connect →</p>
+      </a>
+    </div>
+
+    {contact.data.hero && (
+      <div class="mt-16 rounded-2xl overflow-hidden max-w-md mx-auto">
+        <img src={contact.data.hero} alt="Taymoor Fouladi" class="w-full" />
+      </div>
+    )}
+  </section>
+</BaseLayout>

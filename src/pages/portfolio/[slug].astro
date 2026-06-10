@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('portfolio');
+  return projects.map(p => ({ params: { slug: p.slug }, props: { project: p, all: projects } }));
+}
+
+const { project, all } = Astro.props;
+const { Content } = await project.render();
+const sorted = all.sort((a, b) => a.data.order - b.data.order);
+const idx = sorted.findIndex(p => p.slug === project.slug);
+const prev = sorted[idx - 1];
+const next = sorted[idx + 1];
+---
+
+<BaseLayout title={project.data.title} description={project.data.summary} image={project.data.hero}>
+  <article>
+    <!-- Hero -->
+    <header class="border-b" style="border-color: var(--line);">
+      <div class="max-w-5xl mx-auto px-4 md:px-8 py-16 md:py-24">
+        <a href="/portfolio" class="font-mono text-xs uppercase tracking-[0.2em] hover:opacity-70" style="color: var(--accent)">
+          ← Portfolio
+        </a>
+        <h1 class="mt-6 font-display text-5xl md:text-7xl font-semibold tracking-tight leading-[0.95]">
+          {project.data.title}
+        </h1>
+        {project.data.summary && (
+          <p class="mt-6 text-lg md:text-xl max-w-prose" style="color: var(--muted)">
+            {project.data.summary}
+          </p>
+        )}
+      </div>
+      {project.data.hero && (
+        <div class="max-w-7xl mx-auto px-4 md:px-8 pb-12">
+          <div class="rounded-2xl overflow-hidden bg-ink-100 dark:bg-ink-800 aspect-[16/9] flex items-center justify-center p-12">
+            <img src={project.data.hero} alt={project.data.title} class="max-w-full max-h-full object-contain" />
+          </div>
+        </div>
+      )}
+    </header>
+
+    <!-- Body -->
+    <div class="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-20 prose-custom">
+      <Content />
+    </div>
+
+    <!-- Prev / Next -->
+    <nav class="border-t" style="border-color: var(--line);">
+      <div class="max-w-5xl mx-auto px-4 md:px-8 py-8 grid grid-cols-2 gap-4">
+        {prev ? (
+          <a href={`/portfolio/${prev.slug}`} class="block group">
+            <p class="font-mono text-xs uppercase tracking-wider" style="color: var(--muted)">← Previous</p>
+            <p class="mt-1 font-display text-xl font-semibold group-hover:text-accent transition-colors">{prev.data.title}</p>
+          </a>
+        ) : <span/>}
+        {next ? (
+          <a href={`/portfolio/${next.slug}`} class="block group text-right">
+            <p class="font-mono text-xs uppercase tracking-wider" style="color: var(--muted)">Next →</p>
+            <p class="mt-1 font-display text-xl font-semibold group-hover:text-accent transition-colors">{next.data.title}</p>
+          </a>
+        ) : <span/>}
+      </div>
+    </nav>
+  </article>
+</BaseLayout>

@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import LogoWall from '../components/LogoWall.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+const home = await getEntry('pages', 'home');
+const { Content } = await home.render();
+
+const portfolio = (await getCollection('portfolio')).sort((a, b) => a.data.order - b.data.order);
+const career = (await getCollection('career')).sort((a, b) => a.data.order - b.data.order);
+const featured = portfolio.slice(0, 6);
+
+// Logo wall from career heroes (logos for each brand)
+const logos = career.filter(c => c.data.hero).slice(0, 18).map(c => ({ src: c.data.hero!, alt: c.data.title }));
+---
+
+<BaseLayout title="Taymoor Fouladi" description="Multidisciplinary Director with 15+ years global digital experience. Specialising in CX, UX, UI design and AI." image={home.data.hero}>
+  <Hero
+    title="Taymoor Fouladi"
+    tagline="Director · Product · CX · UX · UI · AI"
+    intro="Multidisciplinary Director with 15+ years of dynamic global digital experience. Designer, Developer, Artworker, Product Owner and Digital Experience Director — shaping experiences for adidas, YEEZY, Rakuten, Esprit, Harrods and more."
+    image={home.data.hero}
+  />
+
+  <!-- Brand wall -->
+  <section class="py-12 md:py-16">
+    <p class="text-center text-xs font-mono uppercase tracking-[0.2em] mb-6" style="color: var(--muted)">
+      Experience with — partial selection
+    </p>
+    <LogoWall logos={logos} />
+  </section>
+
+  <!-- Pitch / Quote -->
+  <section class="max-w-4xl mx-auto px-4 md:px-8 py-16 md:py-24 text-center">
+    <p class="font-mono text-xs uppercase tracking-[0.2em] mb-4" style="color: var(--accent)">A guiding principle</p>
+    <blockquote class="font-display text-3xl md:text-5xl font-medium leading-tight">
+      "Don't Make Me Think."
+    </blockquote>
+    <cite class="block mt-4 not-italic text-sm" style="color: var(--muted)">— Steve Krug</cite>
+    <p class="mt-12 text-lg md:text-xl max-w-prose mx-auto" style="color: var(--muted)">
+      I specialise in customer experience, user experience, and user interface design — built on emotional intelligence, effective communication, and delivering exceptional results under pressure.
+    </p>
+    <div class="mt-6 inline-flex flex-wrap items-center gap-2 text-xs font-mono uppercase tracking-wider">
+      <span class="px-3 py-1 rounded-full border" style="border-color: var(--line)">PSPO</span>
+      <span class="px-3 py-1 rounded-full border" style="border-color: var(--line)">PSM</span>
+      <span class="px-3 py-1 rounded-full border" style="border-color: var(--line)">PRINCE2</span>
+    </div>
+  </section>
+
+  <!-- Featured work -->
+  <section class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.2em] mb-2" style="color: var(--accent)">Selected work</p>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold tracking-tight">Featured Case Studies</h2>
+      </div>
+      <a href="/portfolio" class="hidden md:inline-block text-sm font-medium hover:opacity-70">View all →</a>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {featured.map(p => (
+        <ProjectCard
+          href={`/portfolio/${p.slug}`}
+          title={p.data.title}
+          hero={p.data.hero}
+          summary={p.data.summary}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA strip -->
+  <section class="border-t" style="border-color: var(--line);">
+    <div class="max-w-5xl mx-auto px-4 md:px-8 py-16 md:py-24 text-center">
+      <h2 class="font-display text-3xl md:text-5xl font-semibold tracking-tight">
+        Let's build something <span style="color: var(--accent)">exceptional</span>.
+      </h2>
+      <p class="mt-4 text-lg" style="color: var(--muted)">
+        Open to senior leadership roles, advisory, and selected freelance engagements.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/contact" class="px-6 py-3 rounded-full font-semibold text-white" style="background: var(--accent)">Get in touch</a>
+        <a href="/about" class="px-6 py-3 rounded-full font-semibold border" style="border-color: var(--line)">About me</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

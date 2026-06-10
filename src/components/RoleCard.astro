@@ -1,0 +1,26 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  hero?: string;
+  summary?: string;
+}
+const { href, title, hero, summary } = Astro.props;
+---
+
+<a href={href} class="group flex items-center gap-6 p-6 rounded-xl border hover:bg-ink-100/40 dark:hover:bg-ink-800/40 transition-colors" style="border-color: var(--line);">
+  <div class="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden bg-ink-50 dark:bg-ink-900 flex items-center justify-center p-2">
+    {hero ? (
+      <img src={hero} alt={title} class="w-full h-full object-contain" loading="lazy" />
+    ) : (
+      <span class="font-display text-xs opacity-30">{title.slice(0,3)}</span>
+    )}
+  </div>
+  <div class="flex-1 min-w-0">
+    <h3 class="font-display text-xl md:text-2xl font-semibold tracking-tight group-hover:text-accent transition-colors">
+      {title}
+    </h3>
+    {summary && <p class="text-sm md:text-base mt-1 line-clamp-1" style="color: var(--muted)">{summary}</p>}
+  </div>
+  <span class="flex-shrink-0 opacity-40 group-hover:opacity-100 group-hover:text-accent transition-all">→</span>
+</a>

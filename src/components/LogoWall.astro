@@ -1,0 +1,17 @@
+---
+interface Props {
+  logos: { src: string; alt: string }[];
+}
+const { logos } = Astro.props;
+const doubled = [...logos, ...logos];
+---
+
+<div class="marquee-track overflow-hidden py-6 border-y" style="border-color: var(--line);">
+  <div class="flex gap-12 animate-marquee whitespace-nowrap items-center" style="width: max-content;">
+    {doubled.map(l => (
+      <div class="flex-shrink-0 h-12 md:h-16 opacity-60 hover:opacity-100 transition-opacity">
+        <img src={l.src} alt={l.alt} class="h-full w-auto object-contain" loading="lazy" />
+      </div>
+    ))}
+  </div>
+</div>

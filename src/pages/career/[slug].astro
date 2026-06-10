@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const roles = await getCollection('career');
+  return roles.map(r => ({ params: { slug: r.slug }, props: { role: r, all: roles } }));
+}
+
+const { role, all } = Astro.props;
+const { Content } = await role.render();
+const sorted = all.sort((a, b) => a.data.order - b.data.order);
+const idx = sorted.findIndex(r => r.slug === role.slug);
+const prev = sorted[idx - 1];
+const next = sorted[idx + 1];
+---
+
+<BaseLayout title={role.data.title} description={role.data.summary} image={role.data.hero}>
+  <article>
+    <header class="border-b" style="border-color: var(--line);">
+      <div class="max-w-4xl mx-auto px-4 md:px-8 py-16 md:py-24 flex flex-col md:flex-row gap-10 items-start md:items-center">
+        {role.data.hero && (
+          <div class="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-ink-100 dark:bg-ink-800 flex items-center justify-center p-4">
+            <img src={role.data.hero} alt={role.data.title} class="max-w-full max-h-full object-contain" />
+          </div>
+        )}
+        <div class="flex-1">
+          <a href="/career" class="font-mono text-xs uppercase tracking-[0.2em] hover:opacity-70" style="color: var(--accent)">
+            ← Career
+          </a>
+          <h1 class="mt-4 font-display text-4xl md:text-6xl font-semibold tracking-tight leading-[0.95]">
+            {role.data.title}
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-20 prose-custom">
+      <Content />
+    </div>
+
+    <nav class="border-t" style="border-color: var(--line);">
+      <div class="max-w-5xl mx-auto px-4 md:px-8 py-8 grid grid-cols-2 gap-4">
+        {prev ? (
+          <a href={`/career/${prev.slug}`} class="block group">
+            <p class="font-mono text-xs uppercase tracking-wider" style="color: var(--muted)">← Previous</p>
+            <p class="mt-1 font-display text-xl font-semibold group-hover:text-accent transition-colors">{prev.data.title}</p>
+          </a>
+        ) : <span/>}
+        {next ? (
+          <a href={`/career/${next.slug}`} class="block group text-right">
+            <p class="font-mono text-xs uppercase tracking-wider" style="color: var(--muted)">Next →</p>
+            <p class="mt-1 font-display text-xl font-semibold group-hover:text-accent transition-colors">{next.data.title}</p>
+          </a>
+        ) : <span/>}
+      </div>
+    </nav>
+  </article>
+</BaseLayout>

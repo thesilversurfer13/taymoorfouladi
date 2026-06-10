@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(p => ({ params: { slug: p.slug }, props: { post: p, all: posts } }));
+}
+
+const { post, all } = Astro.props;
+const { Content } = await post.render();
+const sorted = all.sort((a, b) => a.data.order - b.data.order);
+const idx = sorted.findIndex(p => p.slug === post.slug);
+const prev = sorted[idx - 1];
+const next = sorted[idx + 1];
+---
+
+<BaseLayout title={post.data.title} image={post.data.hero}>
+  <article>
+    <header class="border-b" style="border-color: var(--line);">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-24">
+        <a href="/blog" class="font-mono text-xs uppercase tracking-[0.2em] hover:opacity-70" style="color: var(--accent)">
+          ← Blog
+        </a>
+        {post.data.date && (
+          <p class="mt-6 font-mono text-sm" style="color: var(--muted)">{post.data.date}</p>
+        )}
+        <h1 class="mt-2 font-display text-4xl md:text-6xl font-semibold tracking-tight leading-[0.95]">
+          {post.data.title}
+        </h1>
+      </div>
+      {post.data.hero && (
+        <div class="max-w-5xl mx-auto px-4 md:px-8 pb-12">
+          <img src={post.data.hero} alt={post.data.title} class="w-full rounded-2xl" />
+        </div>
+      )}
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 md:px-8 py-16 md:py-20 prose-custom">
+      <Content />
+    </div>
+
+    <nav class="border-t" style="border-color: var(--line);">
+      <div class="max-w-5xl mx-auto px-4 md:px-8 py-8 grid grid-cols-2 gap-4">
+        {prev ? (
+          <a href={`/blog/${prev.slug}`} class="block group">
+            <p class="font-mono text-xs uppercase tracking-wider" style="color: var(--muted)">← Previous</p>
+            <p class="mt-1 font-display text-xl font-semibold group-hover:text-accent transition-colors">{prev.data.title}</p>
+          </a>
+        ) : <span/>}
+        {next ? (
+          <a href={`/blog/${next.slug}`} class="block group text-right">
+            <p class="font-mono text-xs uppercase tracking-wider" style="color: var(--muted)">Next →</p>
+            <p class="mt-1 font-display text-xl font-semibold group-hover:text-accent transition-colors">{next.data.title}</p>
+          </a>
+        ) : <span/>}
+      </div>
+    </nav>
+  </article>
+</BaseLayout>

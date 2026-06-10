@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const about = await getEntry('pages', 'about');
+const { Content } = await about.render();
+---
+
+<BaseLayout title="About" description={about.data.description} image={about.data.hero}>
+  <article class="max-w-4xl mx-auto px-4 md:px-8 py-16 md:py-24">
+    <p class="font-mono text-xs uppercase tracking-[0.2em] mb-4" style="color: var(--accent)">About</p>
+    <h1 class="font-display text-4xl md:text-6xl font-semibold tracking-tight leading-tight">
+      My understanding of CX & UX is beyond digital — it's a way of life.
+    </h1>
+    <p class="mt-6 text-lg md:text-xl max-w-prose" style="color: var(--muted)">
+      My journey has always had a customer experience focus and I have built upon every encounter.
+    </p>
+
+    {about.data.hero && (
+      <div class="mt-12 rounded-2xl overflow-hidden">
+        <img src={about.data.hero} alt="Taymoor Fouladi" class="w-full" />
+      </div>
+    )}
+
+    <div class="prose-custom mt-16">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
