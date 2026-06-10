@@ -162,10 +162,11 @@ const qrSvg = await QRCode.toString(SITE, {
     width: min(520px, 100%);
     aspect-ratio: 1.75 / 1;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     transition: transform 0.85s cubic-bezier(0.6, -0.05, 0.3, 1.2);
     cursor: pointer;
-    border-radius: 16px;
     user-select: none;
+    will-change: transform;
   }
 
   .bc-card.is-flipped { transform: rotateY(180deg); }
@@ -173,6 +174,7 @@ const qrSvg = await QRCode.toString(SITE, {
   .bc-card:focus-visible {
     outline: 3px solid var(--bc-coral);
     outline-offset: 4px;
+    border-radius: 16px;
   }
 
   .bc-face {
@@ -188,8 +190,10 @@ const qrSvg = await QRCode.toString(SITE, {
       0 10px 30px -10px rgba(0,0,0,0.25),
       0 20px 60px -30px rgba(0,0,0,0.15);
     color: var(--bc-ink);
+    container-type: inline-size;
   }
 
+  .bc-front { transform: rotateY(0deg); }
   .bc-back { transform: rotateY(180deg); }
 
   /* FRONT --------------------------------------- */
@@ -418,5 +422,7 @@ const qrSvg = await QRCode.toString(SITE, {
     border-color: var(--line);
   }
 
-  .bc-card { container-type: inline-size; }
+  @media (prefers-reduced-motion: reduce) {
+    .bc-card { transition: none; }
+  }
 </style>
