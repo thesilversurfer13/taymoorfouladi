@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BusinessCard from '../components/BusinessCard.astro';
 import { getEntry } from 'astro:content';
 
 const contact = await getEntry('pages', 'contact');
@@ -16,6 +17,20 @@ const contact = await getEntry('pages', 'contact');
         Drop me a line to discuss opportunities, collaborations, or projects.
         I usually respond within a day or two.
       </p>
+    </div>
+
+    <!-- Business Card -->
+    <section class="mt-16 md:mt-20">
+      <p class="text-center font-mono text-xs uppercase tracking-[0.2em] mb-6" style="color: var(--muted)">
+        — My card —
+      </p>
+      <BusinessCard />
+    </section>
+
+    <div class="my-16 md:my-20 flex items-center gap-4 max-w-2xl mx-auto">
+      <div class="flex-1 h-px" style="background: var(--line);"></div>
+      <p class="font-mono text-xs uppercase tracking-[0.2em]" style="color: var(--muted)">Or send a message</p>
+      <div class="flex-1 h-px" style="background: var(--line);"></div>
     </div>
 
     <form
